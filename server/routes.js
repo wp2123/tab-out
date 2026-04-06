@@ -101,7 +101,7 @@ router.get('/missions', (req, res) => {
 // POST /api/missions/refresh
 //
 // Triggers a fresh analysis of the user's Chrome browsing history.
-// This calls DeepSeek AI and can take several seconds.
+// This calls LLM AI and can take several seconds.
 //
 // Concurrency protection: if a refresh is already running (isRefreshing = true),
 // we return HTTP 429 (Too Many Requests) immediately.
@@ -123,7 +123,7 @@ router.post('/missions/refresh', async (req, res) => {
     // Run the full analysis pipeline:
     //   1. Read Chrome history
     //   2. Filter + deduplicate URLs
-    //   3. Call DeepSeek AI to cluster into missions
+    //   3. Call LLM AI to cluster into missions
     //   4. Save missions + URLs to the SQLite database
     // Returns the array of mission objects that were saved
     const missions = await analyzeBrowsingHistory();
@@ -360,14 +360,14 @@ router.get('/stats', (req, res) => {
 // NEW endpoint for the "Right now" section.
 //
 // Receives an array of currently open browser tabs from the dashboard,
-// filters out chrome:// and extension pages, then asks DeepSeek to cluster
+// filters out chrome:// and extension pages, then asks LLM to cluster
 // them into missions. Results are NOT stored in the database — this is purely
 // ephemeral, recalculated fresh on every page load.
 //
 // Request body:  { tabs: [{ url, title, tabId }] }
 // Response body: { missions: [{ name, summary, tabs: [{ url, title, tabId }] }] }
 // ─────────────────────────────────────────────────────────────────────────────
-// Cache for tab clustering — avoids calling DeepSeek if tabs haven't changed.
+// Cache for tab clustering — avoids calling LLM if tabs haven't changed.
 // We also cache the personalMessage alongside the missions so a cache hit
 // can still show the witty one-liner without an extra AI call.
 let clusterCache = { urlKey: '', result: null, personalMessage: null };
@@ -446,7 +446,7 @@ router.post('/cluster-tabs', async (req, res) => {
   const urlKey = filteredTabs.map(t => t.url).sort().join('|');
 
   if (clusterCache.urlKey === urlKey && clusterCache.result) {
-    console.log('[routes] Tab clustering cache hit — skipping DeepSeek call');
+    console.log('[routes] Tab clustering cache hit — skipping LLM call');
     return res.json({
       missions: clusterCache.result,
       duplicates,
