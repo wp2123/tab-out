@@ -1,7 +1,7 @@
 {
   "name": "tab-out",
   "version": "1.0.0",
-  "description": "Keep tabs on your tabs — an AI-powered mission dashboard for your Chrome new tab page",
+  "description": "Keep tabs on your tabs -- new tab page that groups your open tabs by domain and lets you close them with style",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -20,7 +20,6 @@
   "type": "commonjs",
   "dependencies": {
     "better-sqlite3": "^12.8.0",
-    "express": "^5.2.1",
-    "openai": "^6.33.0"
+    "express": "^5.2.1"
   }
 }

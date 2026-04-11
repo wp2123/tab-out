@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Out",
   "version": "1.0.0",
-  "description": "Keep tabs on your tabs. AI-powered new tab page that groups your open tabs into missions and lets you close them with style.",
+  "description": "Keep tabs on your tabs. New tab page that groups your open tabs by domain and lets you close them with style.",
   "permissions": ["tabs", "activeTab", "storage"],
   "host_permissions": ["http://localhost:3456/*"],
   "chrome_url_overrides": { "newtab": "newtab.html" },

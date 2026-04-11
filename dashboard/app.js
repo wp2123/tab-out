@@ -1,11 +1,11 @@
 /* ================================================================
-   Tab Mission Control — Dashboard App
+   Tab Out — Dashboard App
 
    This file is the brain of the dashboard. It:
    1. Talks to the Chrome extension (to read/close actual browser tabs)
-   2. Fetches mission data from our Express server (/api/missions)
-   3. Renders mission cards, banners, stats, and the scatter meter
-   4. Handles all user actions (close tabs, archive, dismiss, focus)
+   2. Groups open tabs by domain with a landing pages category
+   3. Renders domain cards, banners, and stats
+   4. Handles all user actions (close tabs, save for later, focus)
    ================================================================ */
 
 'use strict';
@@ -446,7 +446,7 @@ function getOpenTabsForMission(missionUrls) {
 /* ----------------------------------------------------------------
    DOMAIN & TITLE CLEANUP HELPERS
 
-   Make domain names and tab titles more readable without any AI.
+   Make domain names and tab titles more readable.
    - friendlyDomain() turns "github.com" into "GitHub"
    - cleanTitle() strips redundant site names from the end of titles
    ---------------------------------------------------------------- */
@@ -787,9 +787,8 @@ function checkTabOutDupes() {
 /* ----------------------------------------------------------------
    DOMAIN CARD RENDERER (for static default view)
 
-   When we haven't asked AI to organize tabs yet, we group them
-   by domain (e.g. all github.com tabs together) and show a card
-   per domain. No AI required — pure JS.
+   Groups open tabs by domain (e.g. all github.com tabs together)
+   and renders a card per domain.
    ---------------------------------------------------------------- */
 
 /**
@@ -797,7 +796,7 @@ function checkTabOutDupes() {
  *
  * Builds the expandable "+N more" section for tab lists that exceed 8 items.
  * Returns HTML string with hidden chips and a clickable expand button.
- * Used by both AI mission cards and domain cards.
+ * Used by domain cards when there are more than 8 tabs.
  */
 function buildOverflowChips(hiddenTabs, urlCounts = {}) {
   const hiddenChips = hiddenTabs.map(tab => {
@@ -838,7 +837,7 @@ function buildOverflowChips(hiddenTabs, urlCounts = {}) {
  * "group" is: { domain, tabs: [{ url, title, tabId }] }
  *
  * Visually similar to renderOpenTabsMissionCard() but with a neutral
- * gray status bar (not green) and no AI-generated summary.
+ * gray status bar (amber if duplicates exist).
  */
 function renderDomainCard(group, groupIndex) {
   const tabs      = group.tabs || [];
@@ -959,7 +958,7 @@ function renderDomainCard(group, groupIndex) {
  *
  * Fetches all deferred tabs (active + archived) from the API and
  * renders them into the right-side column. Called on every dashboard
- * load — both static and AI views.
+ * load.
  */
 async function renderDeferredColumn() {
   const column    = document.getElementById('deferredColumn');
@@ -1069,20 +1068,18 @@ function renderArchiveItem(item) {
 /* ----------------------------------------------------------------
    MAIN DASHBOARD RENDERER
 
-   renderStaticDashboard() — groups open tabs by domain. No AI calls.
+   renderStaticDashboard() — groups open tabs by domain.
    ---------------------------------------------------------------- */
 
 /**
  * renderStaticDashboard()
  *
- * The default view. Loads instantly with no AI call:
+ * The main view. Loads instantly:
  * 1. Paint greeting + date
  * 2. Fetch open tabs from the extension
- * 3. Check if there's a cache hit (tabs already organized) → skip to AI view
- * 4. Group tabs by domain (pure JS, no API)
- * 5. Fetch top sites from /api/stats
- * 6. Render domain cards + "Most visited" + "Organize with AI" button
- * 7. Update scatter bar + footer stats
+ * 3. Group tabs by domain (with landing pages pulled out)
+ * 4. Render domain cards
+ * 5. Update footer stats
  */
 async function renderStaticDashboard() {
   // --- Header: greeting + date ---
@@ -1445,10 +1442,10 @@ document.addEventListener('click', async (e) => {
     return;
   }
 
-  // ---- close-all-open-tabs: close every open tab (works in both static and AI view) ----
+  // ---- close-all-open-tabs: close every open tab ----
   if (action === 'close-all-open-tabs') {
     // Use the actual openTabs list from the extension — works regardless of
-    // whether we're in static (domain-grouped) or AI (mission-grouped) view
+    // close all domain-grouped tabs
     const allUrls = openTabs
       .filter(t => t.url && !t.url.startsWith('chrome') && !t.url.startsWith('about:'))
       .map(t => t.url);

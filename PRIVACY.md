@@ -1,6 +1,6 @@
 # Privacy Policy for Tab Out
 
-**Last updated:** April 5, 2026
+**Last updated:** April 10, 2026
 
 ## What Tab Out accesses
 
@@ -8,11 +8,11 @@ Tab Out reads the titles and URLs of your currently open browser tabs. This is t
 
 ## What is sent externally
 
-When you click "Organize with AI," tab titles and URLs are sent to an AI provider of your choice (such as DeepSeek, OpenAI, or others) for grouping. This only happens when you explicitly click the button. No data is sent automatically or in the background.
+Nothing. Tab Out does not send any data to external servers. All processing happens locally on your computer.
 
 ## What is stored
 
-Tab Out stores your configuration preferences (chosen AI provider, port number, custom grouping rules) in a local config file on your computer at `~/.mission-control/config.json`. No data is stored on external servers.
+Tab Out stores your configuration preferences (port number) in a local config file on your computer at `~/.mission-control/config.json`. Saved-for-later tabs are stored in a local SQLite database. No data is stored on external servers.
 
 ## What is NOT collected
 
@@ -26,7 +26,7 @@ Tab Out does not collect, transmit, or store:
 
 ## Third parties
 
-Tab Out does not share any data with third parties. The only external communication is the AI API call you initiate, sent directly to the provider you configured.
+Tab Out does not share any data with third parties. There are no external API calls, analytics, or tracking of any kind.
 
 ## Contact
 

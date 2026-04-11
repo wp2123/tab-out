@@ -17,7 +17,7 @@ Tab Out
 *(132 characters max)*
 
 ```
-Keep tabs on your tabs. AI-powered new tab page that groups your open tabs into missions and lets you close them with style.
+Keep tabs on your tabs. New tab page that groups your open tabs by domain and lets you close them with style.
 ```
 
 ---
@@ -31,11 +31,11 @@ Tab Out replaces your new tab page with a dashboard of everything you have open.
 
 KEY FEATURES
 
-AI-Powered Missions
-Click "Organize with AI" and Tab Out clusters your open tabs into named missions like "Researching Voice AI" or "Setting up Stripe Billing." It even writes you a witty one-liner about your browsing habits. Results are cached, so it's instant next time if your tabs haven't changed.
+Domain Grouping
+Tabs are grouped by domain instantly. All your GitHub tabs together, all your Google Docs together, everything visible at a glance.
 
-Domain Grouping (no AI required)
-By default, tabs are grouped by domain instantly with zero AI cost. All your GitHub tabs together, all your Google Docs together, everything visible at a glance.
+Landing Pages Group
+Homepages and feeds (Gmail, X, LinkedIn, GitHub, YouTube) are pulled into their own group at the top so you can close them all at once.
 
 Close Tabs with Style
 Hit "Close all" on any group and your tabs disappear with a satisfying swoosh sound and confetti burst. Cleaning up your browser has never felt this good.
@@ -47,17 +47,14 @@ Duplicate Detection
 Tab Out flags when you have the same page open in multiple tabs. One click to close the extras and keep one copy.
 
 Click to Jump
-Click any tab title to switch directly to that tab. No new tab opened, just instant focus.
+Click any tab title to switch directly to that tab, even across different Chrome windows. No new tab opened, just instant focus.
 
-Custom Rules
-Teach the AI your preferences in plain English. Examples: "Group GitHub tabs by repo" or "Call all social media tabs Doom Scrolling."
-
-Works with Any AI Provider
-DeepSeek (cheapest), OpenAI, Grok, Gemini, Claude, Kimi, and more. You choose your provider and model. You can even run it fully locally with Ollama for free.
+Save for Later
+Bookmark individual tabs to a checklist before closing them. Come back to them when you're ready.
 
 SETUP
 
-Tab Out requires a small companion server running on your computer. This is what powers the AI features. Your browsing data never leaves your machine.
+Tab Out requires a small companion server running on your computer. Your browsing data never leaves your machine. No AI, no external API calls.
 
 The easiest way to set up: send this link to your coding agent (Claude Code, Cursor, etc.) and say "install this":
 https://github.com/zarazhangrui/tab-out
@@ -66,7 +63,7 @@ Or follow the manual setup instructions on the GitHub page.
 
 PRIVACY
 
-Tab Out does not collect, transmit, or store any browsing data on external servers. The only data sent anywhere is tab titles and URLs to your chosen AI provider when you click "Organize with AI." The extension only requires the "tabs" permission.
+Tab Out does not collect, transmit, or store any browsing data on external servers. No data is sent anywhere. The extension only requires the "tabs" permission.
 
 FREE AND OPEN SOURCE
 
@@ -96,9 +93,9 @@ English
 The Chrome Web Store requires at least 1 screenshot (1280x800 or 640x400 px).
 
 Suggested shots:
-1. The dashboard showing tabs grouped into named AI missions
-2. The static domain-grouped view with the "Organize with AI" button
-3. A confetti moment after closing a mission
+1. The dashboard showing tabs grouped by domain with landing pages at the top
+2. A confetti moment after closing a group
+3. The "Saved for Later" checklist column
 
 To take a screenshot at exactly 1280x800:
 - Open a new tab (Tab Out loads)
