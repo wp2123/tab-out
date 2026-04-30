@@ -218,9 +218,12 @@ header {
 
 /* ---- Mission Cards ---- */
 .missions {
-  columns: 280px;
-  column-gap: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 40px;
+  overflow-x: auto;
 }
 
 .mission-card {
@@ -1156,3 +1159,150 @@ footer { animation: fadeUp 0.5s ease 0.65s both; }
   opacity: 0.6;
   flex-shrink: 0;
 }
+
+
+/* ================================================================
+   WINDOW GROUPS — 以窗口为维度的区块
+   ================================================================ */
+
+.window-group {
+  flex: 0 0 280px;
+  min-width: 220px;
+}
+
+.window-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.window-header-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.window-title {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.window-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: var(--accent-sage);
+  background: rgba(90, 122, 98, 0.09);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.window-header-line {
+  display: none;
+}
+
+.window-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.window-header-count {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.window-cards {
+  columns: 280px;
+  column-gap: 12px;
+}
+
+/* 每个窗口的标签纵向列表，不限高度 */
+.window-tabs {
+  background: var(--card-bg);
+  border: 1px solid var(--warm-gray);
+  border-radius: 8px;
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.window-tabs .page-chip {
+  width: 100%;
+  border-bottom: 1px solid rgba(154, 145, 138, 0.1);
+  padding: 7px 4px;
+}
+
+.window-tabs .page-chip:last-child {
+  border-bottom: none;
+}
+
+.window-tabs .page-chip .chip-text {
+  -webkit-line-clamp: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* 重命名按钮 */
+.window-rename-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.window-header:hover .window-rename-btn {
+  opacity: 1;
+}
+
+.window-rename-btn:hover {
+  color: var(--ink);
+  background: rgba(154, 145, 138, 0.1);
+}
+
+.window-rename-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* 重命名输入框 */
+.window-rename-input {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--accent-amber);
+  outline: none;
+  padding: 0 2px;
+  width: 160px;
+  min-width: 80px;
+}
+
+
