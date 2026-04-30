@@ -87,6 +87,13 @@ chrome.tabs.onUpdated.addListener(() => {
   updateBadge();
 });
 
+// ─── Side Panel ──────────────────────────────────────────────────────────────
+
+// 点击扩展图标打开 side panel
+chrome.action.onClicked.addListener((tab) => {
+  chrome.sidePanel.open({ windowId: tab.windowId });
+});
+
 // ─── Initial run ─────────────────────────────────────────────────────────────
 
 // Run once immediately when the service worker first loads
