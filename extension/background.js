@@ -89,7 +89,7 @@ chrome.tabs.onUpdated.addListener(() => {
 
 // ─── Side Panel ──────────────────────────────────────────────────────────────
 
-// 点击扩展图标打开 side panel
+// 点击扩展图标打开 side panel（Chrome API 暂不支持关闭，用 ✕ 按钮关闭）
 chrome.action.onClicked.addListener((tab) => {
   chrome.sidePanel.open({ windowId: tab.windowId });
 });
