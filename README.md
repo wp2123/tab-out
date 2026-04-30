@@ -8,12 +8,27 @@ No server. No account. No external API calls. Just a Chrome extension.
 
 ---
 
+## About this fork
+
+This is a personal fork of [zarazhangrui/tab-out](https://github.com/zarazhangrui/tab-out) by [Zara](https://x.com/zarazhangrui).
+
+**Changes from the original:**
+
+| | Original | This fork |
+|---|---|---|
+| Tab grouping | By domain | By window |
+| Window naming | — | Persistent custom names per window |
+| Side panel | — | Always-on side panel (`Alt+T`) for current window |
+| Layout | Domain cards grid | Windows as columns, tabs as flat list |
+
+---
+
 ## Install with a coding agent
 
 Send your coding agent (Claude Code, Codex, etc.) this repo and say **"install this"**:
 
 ```
-https://github.com/zarazhangrui/tab-out
+https://github.com/wp2123/tab-out
 ```
 
 The agent will walk you through it. Takes about 1 minute.
@@ -49,7 +64,7 @@ The agent will walk you through it. Takes about 1 minute.
 **1. Clone the repo**
 
 ```bash
-git clone https://github.com/zarazhangrui/tab-out.git
+git clone https://github.com/wp2123/tab-out.git
 ```
 
 **2. Load the Chrome extension**
