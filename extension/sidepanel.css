@@ -1,0 +1,99 @@
+/* ================================================================
+   Side Panel — 覆盖和补充 style.css 的窄屏样式
+   ================================================================ */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+/* 去掉 body::before 的纸纹（侧边栏不需要） */
+body::before { display: none; }
+
+.sp-container {
+  padding: 16px 12px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+.sp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--warm-gray);
+}
+
+.sp-header-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-window-name {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sp-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sp-tab-count {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  flex: 1;
+}
+
+/* ---- Tab list ---- */
+.sp-tab-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 覆盖 page-chip 使其适配窄列 */
+.sp-tab-list .page-chip {
+  width: 100%;
+  border-bottom: 1px solid rgba(154, 145, 138, 0.1);
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 8px 4px;
+}
+
+.sp-tab-list .page-chip:last-child {
+  border-bottom: none;
+}
+
+.sp-tab-list .chip-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+
+/* ---- Empty state ---- */
+.sp-empty {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  padding: 40px 0;
+}

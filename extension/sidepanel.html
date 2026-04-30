@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Out</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+<div class="sp-container">
+
+  <div class="sp-header">
+    <div class="sp-header-top">
+      <h2 class="sp-window-name" id="spWindowName">This window</h2>
+    </div>
+    <div class="sp-header-meta">
+      <span class="sp-tab-count" id="spTabCount"></span>
+      <button class="action-btn close-tabs" id="spCloseAll" style="font-size:11px;padding:3px 10px;display:none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:10px;height:10px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+        Close all
+      </button>
+    </div>
+  </div>
+
+  <div class="sp-tab-list" id="spTabList"></div>
+
+  <div class="sp-empty" id="spEmpty" style="display:none">
+    No tabs open in this window.
+  </div>
+
+</div>
+
+<div class="toast" id="toast">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+  </svg>
+  <span id="toastText"></span>
+</div>
+
+<script src="sidepanel.js"></script>
+</body>
+</html>
